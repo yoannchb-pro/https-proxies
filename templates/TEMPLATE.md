@@ -5,7 +5,7 @@ A http/https proxies list that update every 3 hours
 ## Proxies
 
 ```txt
-Last update: {%= new Date(data.lastUpdate).toLocaleDateString() %}
+Last update: {%= new Date(data.lastUpdate) %}
 Number of proxy: {%= data.count %}
 Success ({%= data.successList.length %}):
 {%_ for(const success of data.successList){ %}
