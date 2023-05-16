@@ -4,6 +4,7 @@ import USProxyScrapper from "./scrappers/us-proxy";
 import Proxy from "./types/Proxy";
 import fs from "fs";
 import path from "path";
+import tempjs from "tempjs-template";
 import { toCSV, toTXT } from "./utils";
 
 const scrappers = [
@@ -63,5 +64,11 @@ const scrappers = [
   fs.writeFileSync(
     path.resolve(__dirname, "../proxies.txt"),
     toTXT(data.proxies)
+  );
+  //README
+  const template = path.resolve(__dirname, "../templates/TEMPLATE.md");
+  fs.writeFileSync(
+    path.resolve(__dirname, "../README.md"),
+    tempjs.compileFromFile(template, { data })
   );
 })();
