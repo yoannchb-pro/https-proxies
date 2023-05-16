@@ -1,7 +1,7 @@
 {
   "name": "https-proxies",
   "version": "1.0.0",
-  "description": "A http/https proxies list that update every 3 hours",
+  "description": "A http/https proxies list that update every 2 hours",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
