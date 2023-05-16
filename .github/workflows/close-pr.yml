@@ -1,0 +1,13 @@
+name: Close Pull Request
+
+on:
+  pull_request_target:
+    types: [opened]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: superbrothers/close-pull-request@v3
+        with:
+          comment: "The content of this repo is completely generated. Pull Request are not accepted. Please write an issue if you want to participate or do something."

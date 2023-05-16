@@ -1,0 +1,35 @@
+name: Build and Deploy
+
+on:
+  schedule:
+    - cron: "0 */3 * * *"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Run index.js
+        run: node dist/index.js
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add .
+          git commit -m "Auto-build and deploy"
+          git push
