@@ -57,4 +57,26 @@ async function getProxiesFromTable(
   return proxies;
 }
 
-export { defineAnonymityLevel, getProxiesFromTable };
+/**
+ * Convert proxies to csv format
+ * @param proxies
+ * @param headers
+ * @returns
+ */
+function toCSV(proxies: Proxy[], headers: string[]) {
+  const csv: string[] = [headers.join(",")];
+  for (const proxy of proxies) {
+    csv.push(Object.values(proxy).join(","));
+  }
+  return csv.join("\n");
+}
+
+/**
+ * Convert proxies to txt format
+ * @param proxies
+ */
+function toTXT(proxies: Proxy[]) {
+  return proxies.map((proxy) => `${proxy.ip}:${proxy.port}`).join("\n");
+}
+
+export { defineAnonymityLevel, getProxiesFromTable, toCSV, toTXT };
