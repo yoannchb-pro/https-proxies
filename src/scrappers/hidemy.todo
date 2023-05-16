@@ -1,0 +1,59 @@
+import fetch from "node-fetch";
+import { FastHTMLParser } from "fast-html-dom-parser";
+import fs from "fs";
+//TODO
+
+// const document = new FastHTMLParser(html);
+
+/*
+https://www.us-proxy.org/
+https://hidemy.name/en/proxy-list/?maxtime=1000&type=hs#list
+https://www.proxy-list.download/HTTP S SOCKS4 SOCKS5
+https://api.proxyscrape.com/proxytable.php?nf=true&country=all
+*/
+const proxies = [];
+
+function toAnonimity(text) {
+  text = text?.trim();
+  switch (text) {
+    case "Low":
+      return 1;
+    case "Average":
+      return 2;
+    case "High":
+      return 3;
+    default:
+      return 0;
+  }
+}
+
+(async function () {
+  const req = await fetch(
+    "https://hidemy.name/en/proxy-list/?maxtime=1000&type=hs#list",
+    {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0",
+      },
+    }
+  );
+  const html = await req.text();
+  const document = new FastHTMLParser(html);
+  const table = document.getElementsByTagName("table")[0];
+  console.log(html);
+  const lines = table.getElementsByTagName("tr");
+  for (let i = 1; i < lines.length; ++i) {
+    const line = lines[i].getElementsByTagName("td");
+    proxies.push({
+      ip: line[0].textContent,
+      port: line[1].textContent,
+      country: line[2].textContent,
+      anonimity: toAnonimity(line[5].textContent),
+      https: line[4].textContent?.trim() === "HTTPS",
+    });
+  }
+  fs.writeFileSync(
+    "hidemy.json",
+    JSON.stringify({ count: proxies.length, proxies })
+  );
+})();
