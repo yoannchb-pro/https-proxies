@@ -4,8 +4,13 @@ A http/https proxies list that update every 3 hours
 
 ## Proxies
 
-```
-Number of proxy: {% size %}
+```txt
+Number of proxy: 1151
+Success (3):
+  - https://www.proxy-list.download
+  - https://www.us-proxy.org
+  - https://proxyscrape.com/free-proxy-list
+Failed (0):
 ```
 
 ## Type
@@ -14,9 +19,9 @@ Number of proxy: {% size %}
 
 - lastUpdate: Date of the last update
 - count: Number of proxies
-- successList: list of url scrapped with success
-- failedList: list of url scrapped without success
-- proxies: proxy list
+- successList: List of url scrapped with success
+- failedList: List of url scrapped without success
+- proxies: List of proxy
 
 ```ts
 type JSONProxy = {
