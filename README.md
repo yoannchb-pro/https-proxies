@@ -1,11 +1,12 @@
 # https-proxies
 
-A http/https proxies list that update every 3 hours
+A http/https proxies list that update every 2 hours
 
 ## Proxies
 
 ```txt
-Number of proxy: 1151
+Last update: Tue May 16 2023 23:28:37 GMT+0000 (Coordinated Universal Time)
+Number of proxy: 1326
 Success (3):
   - https://www.proxy-list.download
   - https://www.us-proxy.org
