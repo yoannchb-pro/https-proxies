@@ -33,6 +33,7 @@
     "tempjs-template": "^1.0.7"
   },
   "devDependencies": {
+    "@types/node": "^20.1.7",
     "@types/node-fetch": "^2.6.4"
   }
 }
