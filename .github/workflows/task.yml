@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: "14"
         env:
-          NODE_OPTIONS: "--require=ts-node/register"
+          NODE_OPTIONS: "--require ts-node/register"
 
       - name: Install Dependencies
         run: npm install
