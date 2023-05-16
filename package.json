@@ -28,6 +28,10 @@
   },
   "homepage": "https://github.com/yoannchb-pro/https-proxies#readme",
   "dependencies": {
-    "node-fetch": "^3.3.1"
+    "fast-html-dom-parser": "^1.0.5",
+    "node-fetch": "^2.6.11"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.4"
   }
 }
