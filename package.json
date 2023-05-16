@@ -1,0 +1,33 @@
+{
+  "name": "https-proxies",
+  "version": "1.0.0",
+  "description": "A http/https proxies list that update every 3 hours",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoannchb-pro/https-proxies.git"
+  },
+  "keywords": [
+    "proxy",
+    "proxy-list",
+    "auto",
+    "scrapper",
+    "json",
+    "csv",
+    "txt"
+  ],
+  "author": "yoannchb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yoannchb-pro/https-proxies/issues"
+  },
+  "homepage": "https://github.com/yoannchb-pro/https-proxies#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.1"
+  }
+}
