@@ -29,7 +29,8 @@
   "homepage": "https://github.com/yoannchb-pro/https-proxies#readme",
   "dependencies": {
     "fast-html-dom-parser": "^1.0.5",
-    "node-fetch": "^2.6.11"
+    "node-fetch": "^2.6.11",
+    "tempjs-template": "^1.0.7"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.6.4"
