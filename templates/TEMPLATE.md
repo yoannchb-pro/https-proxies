@@ -64,17 +64,17 @@ type Proxy = {
 ### JSON
 
 ```
-$ curl "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/master/proxies.json" > proxies.json
+$ curl "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/main/proxies.json" > proxies.json
 ```
 
 ### CSV
 
 ```
-$ curl "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/master/proxies.csv" > proxies.csv
+$ curl "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/main/proxies.csv" > proxies.csv
 ```
 
 ### Text
 
 ```
-$ curl "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/master/proxies.txt" > proxies.txt
+$ curl "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/main/proxies.txt" > proxies.txt
 ```

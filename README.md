@@ -5,8 +5,8 @@ A http/https proxies list that update every 2 hours
 ## BOT LOGS
 
 ```txt
-Last update: Tue May 16 2023 20:03:45 GMT-0400 (heure d’été de l’Est nord-américain)
-Number of proxy: 1160
+Last update: Tue May 16 2023 20:06:10 GMT-0400 (heure d’été de l’Est nord-américain)
+Number of proxy: 1178
 Success (3):
   - https://www.proxy-list.download
   - https://www.us-proxy.org
@@ -61,17 +61,17 @@ type Proxy = {
 ### JSON
 
 ```
-$ curl "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/master/proxies.json" > proxies.json
+$ curl "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/main/proxies.json" > proxies.json
 ```
 
 ### CSV
 
 ```
-$ curl "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/master/proxies.csv" > proxies.csv
+$ curl "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/main/proxies.csv" > proxies.csv
 ```
 
 ### Text
 
 ```
-$ curl "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/master/proxies.txt" > proxies.txt
+$ curl "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/main/proxies.txt" > proxies.txt
 ```
