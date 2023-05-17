@@ -5,8 +5,8 @@ A http/https proxies list that update every 2 hours
 ## BOT LOGS
 
 ```txt
-Last update: Wed May 17 2023 12:14:40 GMT+0000 (Coordinated Universal Time)
-Number of proxy: 844
+Last update: Wed May 17 2023 14:07:32 GMT+0000 (Coordinated Universal Time)
+Number of proxy: 871
 Success (3):
   - https://www.proxy-list.download
   - https://www.us-proxy.org
