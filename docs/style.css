@@ -1,0 +1,134 @@
+:root {
+  --a: #222831;
+  --b: #393e46;
+  --c: #00adb5;
+  --d: #eeeeee;
+  --ao: #2228319d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  color: var(--d);
+}
+
+html {
+  background-color: var(--b);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 1rem;
+  background-color: var(--a);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header img {
+  height: 2rem;
+}
+
+header h1 {
+  font-size: 1.4rem;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  flex: 1 1;
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  max-width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+table tr {
+  background-color: var(--a);
+}
+
+table tr:nth-child(2n) {
+  background-color: var(--ao);
+}
+
+table tr:first-child {
+  background-color: var(--c);
+  text-transform: uppercase;
+}
+
+table td,
+th {
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+table .mobile-header {
+  display: none;
+  color: var(--c);
+}
+
+#indexer {
+  position: sticky;
+  top: 0;
+  background-color: var(--b);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  width: 100%;
+  color: var(--c);
+}
+
+#indexer option,
+select {
+  color: var(--c);
+}
+
+#indexer div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#update {
+  color: var(--c);
+}
+
+@media (max-width: 768px) {
+  table {
+    width: 100%;
+  }
+
+  table tr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  table td {
+    text-align: left !important;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  table th {
+    display: none;
+  }
+
+  table .mobile-header {
+    display: block;
+  }
+}
