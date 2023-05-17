@@ -33,12 +33,23 @@ function generateTable(proxies) {
     for (const proxyInfo of proxyInformations) {
       const column = document.createElement("td");
 
+      const header = headers[columnIndex];
       const span = document.createElement("span");
-      span.textContent = headers[columnIndex].toLocaleUpperCase() + ":";
+      span.textContent = header.toLocaleUpperCase() + ":";
       span.className = "mobile-header";
 
       column.appendChild(span);
-      column.appendChild(document.createTextNode(proxyInfo));
+
+      let text = proxyInfo;
+      if (header === "anonymity") {
+        const levels = ["-", "Low", "Average", "High"];
+        text = levels[parseInt(text)];
+      }
+      if (header === "speed") {
+        text = text === null ? "-" : text + " ms";
+      }
+
+      column.appendChild(document.createTextNode(text));
 
       line.appendChild(column);
       ++columnIndex;
