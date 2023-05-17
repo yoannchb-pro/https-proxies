@@ -2,6 +2,10 @@
 
 A http/https proxies list that update every 2 hours
 
+## Website
+
+See the proxy list as a table [here](https://yoannchb-pro.github.io/https-proxies/)
+
 ## BOT LOGS
 
 ```txt
