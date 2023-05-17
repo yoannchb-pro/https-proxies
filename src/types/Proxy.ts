@@ -9,8 +9,9 @@ type Proxy = {
   ip: string;
   port: number;
   country: string;
-  anonimity: Anonymity;
+  anonymity: Anonymity;
   https: boolean;
+  speed: number;
 };
 
 export default Proxy;

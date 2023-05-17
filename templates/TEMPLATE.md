@@ -2,7 +2,7 @@
 
 A http/https proxies list that update every 2 hours
 
-## Proxies
+## BOT LOGS
 
 ```txt
 Last update: {%= new Date(data.lastUpdate) %}
@@ -39,6 +39,8 @@ type JSONProxy = {
 
 ### Proxy type
 
+- speed: Speed time in ms (can be null)
+
 ```ts
 enum Anonymity {
   UNKNOWN = 0,
@@ -51,8 +53,9 @@ type Proxy = {
   ip: string;
   port: number;
   country: string;
-  anonimity: Anonymity;
+  anonymity: Anonymity;
   https: boolean;
+  speed: number;
 };
 ```
 

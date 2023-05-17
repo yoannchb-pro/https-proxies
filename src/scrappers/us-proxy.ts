@@ -7,8 +7,9 @@ function USProxyScrapper() {
       ip: 0,
       port: 1,
       country: 2,
-      anonimity: 4,
+      anonymity: 4,
       https: 6,
+      speed: null,
     },
     ["transparent", "anonymous", "elite proxy"],
     "yes"

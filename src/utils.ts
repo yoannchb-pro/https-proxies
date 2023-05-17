@@ -28,7 +28,12 @@ async function getProxiesFromTable(
   anonimityLevels: string[],
   httpsKeyWord?: string
 ): Promise<Proxy[]> {
-  const req = await fetch(url);
+  const req = await fetch(url, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36",
+    },
+  });
   const html = await req.text();
 
   const proxies: Proxy[] = [];
@@ -44,13 +49,14 @@ async function getProxiesFromTable(
       ip: line[columns["ip"]].textContent,
       port: parseInt(line[columns["port"]].textContent),
       country: line[columns["country"]].textContent,
-      anonimity: defineAnonymityLevel(
-        line[columns["anonimity"]].textContent,
+      anonymity: defineAnonymityLevel(
+        line[columns["anonymity"]].textContent,
         anonimityLevels
       ),
       https: httpsKeyWord
         ? line[columns["https"]].textContent?.trim() === httpsKeyWord
         : false,
+      speed: columns["speed"] === null ? null : line[columns["speed"]],
     });
   }
 
@@ -63,7 +69,7 @@ async function getProxiesFromTable(
  * @param headers
  * @returns
  */
-function toCSV(proxies: Proxy[], headers: string[]) {
+function toCSV(proxies: Proxy[], headers: (keyof Proxy)[]) {
   const csv: string[] = [headers.join(",")];
   for (const proxy of proxies) {
     csv.push(Object.values(proxy).join(","));

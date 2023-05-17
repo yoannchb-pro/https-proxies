@@ -2,11 +2,11 @@
 
 A http/https proxies list that update every 2 hours
 
-## Proxies
+## BOT LOGS
 
 ```txt
-Last update: Tue May 16 2023 23:28:37 GMT+0000 (Coordinated Universal Time)
-Number of proxy: 1326
+Last update: Tue May 16 2023 20:03:45 GMT-0400 (heure d’été de l’Est nord-américain)
+Number of proxy: 1160
 Success (3):
   - https://www.proxy-list.download
   - https://www.us-proxy.org
@@ -36,6 +36,8 @@ type JSONProxy = {
 
 ### Proxy type
 
+- speed: Speed time in ms (can be null)
+
 ```ts
 enum Anonymity {
   UNKNOWN = 0,
@@ -48,8 +50,9 @@ type Proxy = {
   ip: string;
   port: number;
   country: string;
-  anonimity: Anonymity;
+  anonymity: Anonymity;
   https: boolean;
+  speed: number;
 };
 ```
 

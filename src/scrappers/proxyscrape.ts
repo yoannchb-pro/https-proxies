@@ -15,8 +15,9 @@ async function ProxyScrapeScrapper() {
       ip,
       port: parseInt(port),
       country: httpProxies[proxy].country,
-      anonimity: httpProxies[proxy].anonymity,
+      anonymity: httpProxies[proxy].anonymity,
       https: false,
+      speed: Math.round(httpProxies[proxy].uptime),
     });
   }
 

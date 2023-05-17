@@ -58,7 +58,14 @@ const scrappers = [
   //CSV
   fs.writeFileSync(
     path.resolve(__dirname, "../proxies.csv"),
-    toCSV(data.proxies, ["ip", "port", "country", "anonymity", "https"])
+    toCSV(data.proxies, [
+      "ip",
+      "port",
+      "country",
+      "anonymity",
+      "https",
+      "speed",
+    ])
   );
   //TXT
   fs.writeFileSync(

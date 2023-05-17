@@ -16,12 +16,13 @@ async function ProxyListScrapper() {
         ip: proxy.IP,
         port: proxy.PORT,
         country: proxy.ISO,
-        anonimity: defineAnonymityLevel(proxy.ANON, [
+        anonymity: defineAnonymityLevel(proxy.ANON, [
           "Transparent",
           "",
           "Elite",
         ]),
         https: protocol === "https",
+        speed: proxy.PING,
       });
     }
   }
