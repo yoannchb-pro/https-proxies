@@ -9,8 +9,8 @@ See the proxy list as a table [here](https://yoannchb-pro.github.io/https-proxie
 ## BOT LOGS
 
 ```txt
-Last update: Sun Jun 04 2023 20:07:46 GMT+0000 (Coordinated Universal Time)
-Number of proxy: 1256
+Last update: Sun Jun 04 2023 22:06:52 GMT+0000 (Coordinated Universal Time)
+Number of proxy: 1202
 Success (3):
   - https://www.proxy-list.download
   - https://www.us-proxy.org
