@@ -43,17 +43,22 @@ let api: JSONProxy = null;
  * @returns A boolean to describe if proxies have been updated or not
  */
 async function updateProxiesOnNeed(): Promise<boolean> {
-  const nextUpdateTime = new Date(api.lastUpdate);
-  nextUpdateTime.setHours(nextUpdateTime.getHours() + 2);
-  if (!api && nextUpdateTime <= new Date()) {
+  async function update() {
     const req = await fetch(
       "https://raw.githubusercontent.com/yoannchb-pro/https-proxies/main/proxies.json"
     );
     const response = (await req.json()) as JSONProxy;
-    if (api.lastUpdate === response.lastUpdate) return false;
+    if (api?.lastUpdate === response.lastUpdate) return false;
     api = response;
     return true;
   }
+
+  if (!api) return await update();
+
+  const nextUpdateTime = new Date(api?.lastUpdate);
+  nextUpdateTime.setHours(nextUpdateTime.getHours() + 2);
+  if (nextUpdateTime <= new Date()) return await update();
+
   return false;
 }
 
@@ -102,19 +107,16 @@ async function getProxy(filters: Filters = {}): Promise<Proxy> {
         });
   });
 
-  if (proxyIndex === -1)
-    throw new Error(
-      "No proxy available you can wait for next update by using 'waitProxiesUpdated' function"
-    );
+  if (proxyIndex === -1) return null;
 
   const proxy = api.proxies.splice(proxyIndex, 1)[0];
 
-  const isProxyValid = await proxyCheck({
-    host: proxy.ip,
-    port: proxy.port,
-  }).catch((_) => false);
+  // const isProxyValid = await proxyCheck({
+  //   host: proxy.ip,
+  //   port: proxy.port,
+  // }).catch((_) => false);
 
-  if (!isProxyValid) return await getProxy();
+  // if (!isProxyValid) return getProxy();
 
   return proxy;
 }

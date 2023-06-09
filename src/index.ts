@@ -52,7 +52,6 @@ async function getProxies() {
             return false;
           }
 
-          failedProxies++;
           logs.register(
             "proxy check",
             `${proxy.ip}:${proxy.port} added with success`
@@ -61,6 +60,7 @@ async function getProxies() {
           return true;
         }
 
+        failedProxies++;
         logs.register(
           "proxy check",
           `${proxy.ip}:${proxy.port} proxy already added`

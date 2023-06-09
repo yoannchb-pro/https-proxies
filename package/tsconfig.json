@@ -8,9 +8,9 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
-    "resolveJsonModule": true,
-    "types": ["node"],
-    "declaration": true
+    "declaration": true,
+    "typeRoots": ["node_modules/@types"],
+    "types": ["node", "jest"]
   },
   "include": ["index.ts"]
 }

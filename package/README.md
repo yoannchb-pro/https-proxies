@@ -54,7 +54,7 @@ Filters:
 
 #### waitProxiesUpdated
 
-Wait the proxy list is updated if you don't get any result
+Wait the proxy list is updated if you don't get any result (can take 2 hours !)
 
 ```ts
 await waitProxiesUpdated();
