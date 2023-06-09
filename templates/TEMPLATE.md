@@ -6,6 +6,10 @@ A http/https proxies list that update every 2 hours
 
 See the proxy list as a table [here](https://yoannchb-pro.github.io/https-proxies/)
 
+## Package
+
+See the typescript package to get proxies with custom filters [here](https://github.com/yoannchb-pro/https-proxies/tree/main/package)
+
 ## BOT LOGS
 
 Full version [here](./bot.logs)
