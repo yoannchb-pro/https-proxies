@@ -1,9 +1,9 @@
 import { getProxiesFromTable } from "../utils";
 
 function USProxyScrapper() {
-  return getProxiesFromTable(
-    "https://www.us-proxy.org/",
-    {
+  return getProxiesFromTable({
+    url: "https://www.us-proxy.org/",
+    columns: {
       ip: 0,
       port: 1,
       country: 2,
@@ -11,9 +11,9 @@ function USProxyScrapper() {
       https: 6,
       speed: null,
     },
-    ["transparent", "anonymous", "elite proxy"],
-    "yes"
-  );
+    anonimityLevels: ["transparent", "anonymous", "elite proxy"],
+    httpsKeyWord: "yes",
+  });
 }
 
 export default USProxyScrapper;

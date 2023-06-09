@@ -8,6 +8,8 @@ See the proxy list as a table [here](https://yoannchb-pro.github.io/https-proxie
 
 ## BOT LOGS
 
+Full version [here](./bot.logs)
+
 ```txt
 Last update: {%= new Date(data.lastUpdate) %}
 Number of proxy: {%= data.count %}

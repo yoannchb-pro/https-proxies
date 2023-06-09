@@ -1,5 +1,6 @@
 import Proxy from "./types/Proxy";
 import fetch from "node-fetch";
+import fs from "fs";
 
 const { FastHTMLParser } = require("fast-html-dom-parser");
 
@@ -22,12 +23,17 @@ function defineAnonymityLevel(anonymity: string, levels: string[]) {
  * @param httpsKeyWord
  * @returns
  */
-async function getProxiesFromTable(
-  url: string,
-  columns: { [K in keyof Proxy]: number },
-  anonimityLevels: string[],
-  httpsKeyWord?: string
-): Promise<Proxy[]> {
+async function getProxiesFromTable({
+  url,
+  columns,
+  anonimityLevels,
+  httpsKeyWord,
+}: {
+  url: string;
+  columns: { [K in keyof Proxy]: number };
+  anonimityLevels: string[];
+  httpsKeyWord?: string;
+}): Promise<Proxy[]> {
   const req = await fetch(url, {
     headers: {
       "User-Agent":
@@ -85,4 +91,23 @@ function toTXT(proxies: Proxy[]) {
   return proxies.map((proxy) => `${proxy.ip}:${proxy.port}`).join("\n");
 }
 
-export { defineAnonymityLevel, getProxiesFromTable, toCSV, toTXT };
+/**
+ * Bot logs
+ * @returns
+ */
+function createLogs() {
+  const logs: { type: string; message: string }[] = [];
+  return {
+    register(type: string, message: string) {
+      logs.push({ type: `[${type.toUpperCase()}]`, message });
+    },
+    save(path: string) {
+      fs.writeFileSync(
+        path,
+        logs.map((log) => log.type + " " + log.message).join("\n")
+      );
+    },
+  };
+}
+
+export { defineAnonymityLevel, getProxiesFromTable, toCSV, toTXT, createLogs };

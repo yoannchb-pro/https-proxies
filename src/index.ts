@@ -5,16 +5,24 @@ import Proxy from "./types/Proxy";
 import fs from "fs";
 import path from "path";
 import tempjs from "tempjs-template";
-import { toCSV, toTXT } from "./utils";
+import { createLogs, toCSV, toTXT } from "./utils";
+import "./types/ProxyCheck";
+import ProxyCheck from "./types/ProxyCheck";
 
+const proxyCheck: ProxyCheck = require("proxy-check");
+
+const logs = createLogs();
 const scrappers = [
   { url: "https://www.proxy-list.download", fn: ProxyListScrapper },
   { url: "https://www.us-proxy.org", fn: USProxyScrapper },
   { url: "https://proxyscrape.com/free-proxy-list", fn: ProxyScrapeScrapper },
 ];
 
-(async function () {
+async function getProxies() {
+  logs.register("init", "Starting getting proxies");
+
   let finalProxies: Proxy[] = [];
+  let failedProxies = 0;
   const proxiesIp = new Set<string>();
 
   const successList: string[] = [];
@@ -22,23 +30,55 @@ const scrappers = [
 
   for (const scrapper of scrappers) {
     try {
+      logs.register("scrapping", `Scrapping: ${scrapper.url}`);
       const proxies = await scrapper.fn();
 
-      const filteredProxies = proxies.filter((proxy) => {
+      logs.register("scrapping", `Amount of proxies: ${proxies.length}`);
+
+      const filteredProxies = await proxies.filter(async (proxy) => {
         const alreadyAdded = proxiesIp.has(proxy.ip);
         if (!alreadyAdded) {
+          const valide = await proxyCheck({
+            host: proxy.ip,
+            port: proxy.port,
+          }).catch((_) => false);
+
+          if (!valide) {
+            failedProxies++;
+            logs.register(
+              "proxy check",
+              `${proxy.ip}:${proxy.port} ECONNRESET`
+            );
+            return false;
+          }
+
+          failedProxies++;
+          logs.register(
+            "proxy check",
+            `${proxy.ip}:${proxy.port} added with success`
+          );
           proxiesIp.add(proxy.ip);
           return true;
         }
+
+        logs.register(
+          "proxy check",
+          `${proxy.ip}:${proxy.port} proxy already added`
+        );
         return false;
       });
+
+      logs.register(
+        "scrapping",
+        `Amount of final proxies: ${filteredProxies.length} for ${scrapper.url}`
+      );
 
       finalProxies = finalProxies.concat(filteredProxies);
 
       successList.push(scrapper.url);
     } catch (e) {
+      logs.register("error", e);
       failedList.push(scrapper.url);
-      console.error(e);
     }
   }
 
@@ -50,11 +90,15 @@ const scrappers = [
     proxies: finalProxies,
   };
 
+  logs.register("sucess", `${finalProxies.length} proxies results`);
+  logs.register("failed", `${failedProxies} failed or duplicate proxies`);
+
   //JSON
   fs.writeFileSync(
     path.resolve(__dirname, "../proxies.json"),
     JSON.stringify(data)
   );
+  logs.register("save", "JSON created with success");
   //CSV
   fs.writeFileSync(
     path.resolve(__dirname, "../proxies.csv"),
@@ -67,15 +111,25 @@ const scrappers = [
       "speed",
     ])
   );
+  logs.register("save", "CSV created with success");
   //TXT
   fs.writeFileSync(
     path.resolve(__dirname, "../proxies.txt"),
     toTXT(data.proxies)
   );
+  logs.register("save", "TXT created with success");
   //README
   const template = path.resolve(__dirname, "../templates/TEMPLATE.md");
   fs.writeFileSync(
     path.resolve(__dirname, "../README.md"),
     tempjs.compileFromFile(template, { data })
   );
-})();
+  logs.register("save", "README created with success");
+  //LOGS
+  logs.save(path.resolve(__dirname, "../bot.logs"));
+}
+
+getProxies().catch((e) => {
+  logs.register("fatal error", e);
+  logs.save(path.resolve(__dirname, "../bot.logs"));
+});

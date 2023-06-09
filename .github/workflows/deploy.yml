@@ -27,14 +27,14 @@ jobs:
         run: npm run build
 
       - name: Run index.js
-        run: node dist/index.js
+        run: npm start
 
       - name: Commit and Push Changes
         run: |
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
           git add .
-          git commit -m "Auto-build and deploy"
+          git commit -m "BOT: Auto proxies update"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
