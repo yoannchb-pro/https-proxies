@@ -6,13 +6,17 @@ A http/https proxies list that update every 2 hours
 
 See the proxy list as a table [here](https://yoannchb-pro.github.io/https-proxies/)
 
+## Package
+
+See the typescript package to get proxies with custom filters [here](https://github.com/yoannchb-pro/https-proxies/tree/main/package)
+
 ## BOT LOGS
 
 Full version [here](./bot.logs)
 
 ```txt
-Last update: Fri Jun 09 2023 21:05:32 GMT+0000 (Coordinated Universal Time)
-Number of proxy: 1407
+Last update: Fri Jun 09 2023 21:41:17 GMT+0000 (Coordinated Universal Time)
+Number of proxy: 1369
 Success (3):
   - https://www.proxy-list.download
   - https://www.us-proxy.org
