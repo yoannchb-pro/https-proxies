@@ -1,0 +1,39 @@
+{
+  "name": "@yoannchb/https-proxies",
+  "version": "1.0.0",
+  "description": "A full list of http/https proxies updated every 2 hours",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "tsconfig.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoannchb-pro/https-proxies.git"
+  },
+  "keywords": [
+    "proxy",
+    "proxy-list",
+    "typescript",
+    "bot",
+    "filters",
+    "javascript"
+  ],
+  "author": "yoannchb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yoannchb-pro/https-proxies/issues"
+  },
+  "homepage": "https://github.com/yoannchb-pro/https-proxies#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.1",
+    "proxy-check": "^1.0.8"
+  }
+}
