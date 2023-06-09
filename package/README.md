@@ -2,6 +2,10 @@
 
 A full list of http/https proxies updated every 2 hours
 
+## Update
+
+See changelog [here](./CHANGELOG.md)
+
 ## Installation
 
 ```
