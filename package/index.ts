@@ -77,6 +77,37 @@ function waitProxiesUpdated(): Promise<void> {
 }
 
 /**
+ * Find a proxy with specified filters
+ * @param filters
+ * @returns
+ */
+function findProxyWithFilters(filters: Filters) {
+  const proxyIndex = api.proxies.findIndex((proxy) => {
+    const filtersKeys = Object.keys(filters);
+    return filtersKeys.length === 0
+      ? true
+      : filtersKeys.every((filterName) => {
+          const filterValue: any = filters[filterName as keyof Filters];
+          switch (filterName) {
+            case "maxSpeed":
+              return proxy.speed ?? Infinity < filterValue;
+            case "https":
+              return proxy.https === filterValue;
+            case "anonymity":
+              return filterValue?.includes(proxy.anonymity);
+            case "country":
+              return filterValue?.includes(proxy.country);
+            case "port":
+              return filterValue?.includes(proxy.port);
+            default:
+              return true;
+          }
+        });
+  });
+  return proxyIndex;
+}
+
+/**
  * Get a proxy with specific filters
  * @param filters
  * @returns
@@ -84,41 +115,20 @@ function waitProxiesUpdated(): Promise<void> {
 async function getProxy(filters: Filters = {}): Promise<Proxy> {
   await updateProxiesOnNeed();
 
-  const proxyIndex = api.proxies.findIndex((proxy) => {
-    const filtersKeys = Object.keys(filters);
-    return filtersKeys.length === 0
-      ? true
-      : filtersKeys.every((filterName) => {
-          const filter: any = filters[filterName as keyof Filters];
-          switch (filterName) {
-            case "maxSpeed":
-              return proxy.speed < filter;
-            case "https":
-              return proxy.https === filter;
-            case "anonymity":
-              return filter.includes(proxy.anonymity);
-            case "country":
-              return filter.includes(proxy.country);
-            case "port":
-              return filter.includes(proxy.port);
-            default:
-              return true;
-          }
-        });
-  });
+  let isProxyValid = false;
+  while (!isProxyValid) {
+    const proxyIndex = findProxyWithFilters(filters);
+    if (proxyIndex === -1) return null;
 
-  if (proxyIndex === -1) return null;
+    const proxy = api.proxies.splice(proxyIndex, 1)[0];
 
-  const proxy = api.proxies.splice(proxyIndex, 1)[0];
+    isProxyValid = await proxyCheck({
+      host: proxy.ip,
+      port: proxy.port,
+    }).catch(() => false);
 
-  // const isProxyValid = await proxyCheck({
-  //   host: proxy.ip,
-  //   port: proxy.port,
-  // }).catch((_) => false);
-
-  // if (!isProxyValid) return getProxy();
-
-  return proxy;
+    return proxy;
+  }
 }
 
 export { getProxy, waitProxiesUpdated };
