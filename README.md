@@ -15,8 +15,8 @@ See the typescript package to get proxies with custom filters [here](https://git
 Full version [here](./bot.logs)
 
 ```txt
-Last update: Sat Jun 10 2023 02:39:58 GMT+0000 (Coordinated Universal Time)
-Number of proxy: 1138
+Last update: Sat Jun 10 2023 04:09:08 GMT+0000 (Coordinated Universal Time)
+Number of proxy: 1215
 Success (3):
   - https://www.proxy-list.download
   - https://www.us-proxy.org
