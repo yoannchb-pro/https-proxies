@@ -1,8 +1,5 @@
 import fetch from "node-fetch";
-
-type ProxyCheck = ({}: { host: string; port: number }) => Promise<boolean>;
-
-const proxyCheck: ProxyCheck = require("proxy-check");
+import http from "http";
 
 enum Anonymity {
   UNKNOWN = 0,
@@ -36,7 +33,52 @@ type Filters = {
   maxSpeed?: number;
 };
 
+type ProxyCheckParams = {
+  ip: string;
+  port: number;
+  timeout?: number;
+};
+
 let api: JSONProxy = null;
+const errors = ["Bad proxy string", "Proxy offline"];
+
+/**
+ * Check if a proxy is valid or not
+ * @param proxy
+ * @returns
+ */
+function proxyCheck(proxy: ProxyCheckParams): Promise<boolean> {
+  return new Promise((resolve, reject) => {
+    const proxyOptions = {
+      method: "CONNECT",
+      path: "www.google.com:443",
+      timeout: proxy.timeout ?? 2000,
+      agent: false,
+      host: proxy.ip,
+      port: proxy.port,
+    };
+
+    const req = http.request(proxyOptions);
+
+    req.on("connect", (res) => {
+      req.destroy();
+      if (res.statusCode === 200) {
+        return resolve(true);
+      } else {
+        return reject(errors[1]);
+      }
+    });
+
+    req.on("timeout", () => {
+      req.destroy();
+    });
+
+    req.on("error", (err) => {
+      return reject(err || errors[1]);
+    });
+    req.end();
+  });
+}
 
 /**
  * Check if proxy list need update or not
@@ -123,8 +165,9 @@ async function getProxy(filters: Filters = {}): Promise<Proxy> {
     const proxy = api.proxies.splice(proxyIndex, 1)[0];
 
     isProxyValid = await proxyCheck({
-      host: proxy.ip,
+      ip: proxy.ip,
       port: proxy.port,
+      timeout: proxy.speed,
     }).catch(() => false);
 
     return proxy;

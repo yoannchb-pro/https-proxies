@@ -1,6 +1,6 @@
 {
   "name": "@yoannchb/https-proxies",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A full list of http/https proxies updated every 2 hours",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -33,8 +33,7 @@
   },
   "homepage": "https://github.com/yoannchb-pro/https-proxies#readme",
   "dependencies": {
-    "node-fetch": "^2.6.11",
-    "proxy-check": "^1.0.8"
+    "node-fetch": "^2.6.11"
   },
   "devDependencies": {
     "@types/jest": "^29.2.6",

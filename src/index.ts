@@ -5,15 +5,14 @@ import Proxy from "./types/Proxy";
 import fs from "fs";
 import path from "path";
 import tempjs from "tempjs-template";
-import { createLogs, toCSV, toTXT } from "./utils";
+import { createLogs, filterAsync, toCSV, toTXT } from "./utils";
 import "./types/ProxyCheck";
-import ProxyCheck from "./types/ProxyCheck";
 import FreeProxyListNetScrapper from "./scrappers/free-proxy-list-net";
 import GeonodeScrapper from "./scrappers/geonode";
-
-const proxyCheck: ProxyCheck = require("proxy-check");
+import proxyCheck from "./proxy-check";
 
 const logs = createLogs();
+
 const scrappers = [
   { url: "https://www.proxy-list.download", fn: ProxyListScrapper },
   { url: "https://www.us-proxy.org", fn: USProxyScrapper },
@@ -39,37 +38,38 @@ async function getProxies() {
 
       logs.register("scrapping", `Amount of proxies: ${proxies.length}`);
 
-      const filteredProxies = await proxies.filter(async (proxy) => {
+      const filteredProxies = await filterAsync(proxies, async (proxy) => {
         const alreadyAdded = proxiesIp.has(proxy.ip);
-        if (!alreadyAdded) {
-          const valide = await proxyCheck({
-            host: proxy.ip,
-            port: proxy.port,
-          }).catch(() => false);
 
-          if (!valide) {
-            failedProxies++;
-            logs.register(
-              "proxy check",
-              `${proxy.ip}:${proxy.port} ECONNRESET`
-            );
-            return false;
-          }
-
+        /* Check the proxy is not already registered */
+        if (alreadyAdded) {
+          failedProxies++;
           logs.register(
             "proxy check",
-            `${proxy.ip}:${proxy.port} added with success`
+            `${proxy.ip}:${proxy.port} proxy already added`
           );
-          proxiesIp.add(proxy.ip);
-          return true;
+          return false;
         }
 
-        failedProxies++;
+        const valide = await proxyCheck({
+          ip: proxy.ip,
+          port: proxy.port,
+          timeout: proxy.speed + 500,
+        }).catch(() => false);
+
+        /* We check the proxy is valide */
+        if (!valide) {
+          failedProxies++;
+          logs.register("proxy check", `${proxy.ip}:${proxy.port} ECONNRESET`);
+          return false;
+        }
+
         logs.register(
           "proxy check",
-          `${proxy.ip}:${proxy.port} proxy already added`
+          `${proxy.ip}:${proxy.port} added with success`
         );
-        return false;
+        proxiesIp.add(proxy.ip);
+        return true;
       });
 
       logs.register(

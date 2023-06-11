@@ -30,7 +30,6 @@
   "dependencies": {
     "fast-html-dom-parser": "^1.0.5",
     "node-fetch": "^2.6.11",
-    "proxy-check": "^1.0.8",
     "tempjs-template": "^1.0.7"
   },
   "devDependencies": {

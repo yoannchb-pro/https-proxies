@@ -4,7 +4,7 @@ A full list of http/https proxies updated every 2 hours
 
 ## Update
 
-See changelog [here](./CHANGELOG.md)
+See changelog [here](https://github.com/yoannchb-pro/https-proxies/blob/main/package/CHANGELOG.md)
 
 ## Installation
 
@@ -20,6 +20,19 @@ $ npm i @yoannchb/https-proxies
 import { getProxy, waitProxiesUpdated } from "@yoannchb/https-proxies";
 //or
 const { getProxy, waitProxiesUpdated } = require("@yoannchb/https-proxies");
+```
+
+### Example
+
+```js
+const filters = { anonymity: [2, 3], maxSpeed: 2000 };
+const proxy = await getProxy(filters);
+if (!proxy) {
+  await waitProxiesUpdated();
+  proxy = await getProxy(filters);
+  if (!proxy) console.log("I should maybe use less filters !");
+}
+console.log(proxy);
 ```
 
 ### Usage

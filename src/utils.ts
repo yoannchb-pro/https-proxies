@@ -110,4 +110,25 @@ function createLogs() {
   };
 }
 
-export { defineAnonymityLevel, getProxiesFromTable, toCSV, toTXT, createLogs };
+/**
+ * Async filter for array
+ * @param arr
+ * @param filterFn
+ * @returns
+ */
+async function filterAsync<T>(
+  arr: T[],
+  filterFn: (item: T) => Promise<boolean>
+): Promise<T[]> {
+  const filterResults = await Promise.all(arr.map(filterFn));
+  return arr.filter((_, index) => filterResults[index]);
+}
+
+export {
+  defineAnonymityLevel,
+  getProxiesFromTable,
+  toCSV,
+  toTXT,
+  createLogs,
+  filterAsync,
+};
