@@ -15,13 +15,13 @@ See the typescript package to get proxies with custom filters [here](https://git
 Generation logs [here](./bot.logs)
 
 ```txt
-Last update: Sat Jun 10 2023 21:58:30 GMT-0400 (heure d’été de l’Est nord-américain)
-Number of proxy: 1713
-Number of https proxy: 194
-Number of http proxy: 1519
-Number of proxy by Anonymity: Unknown -> 0, Low -> 407, Average -> 451, High -> 855
-Average speed: 543 ms
-Countries (79): US, CN, VN, GB, ID, FR, ZA, HK, SG, VE, KR, MX, CO, DE, JP, CZ, EG, AR, IN, KH, TH, BD, MY, AU, CA, RU, BO, UA, TW, IR, EC, CL, KZ, DO, BR, CM, CH, FI, LY, TR, LV, AT, PH, LT, SV, PE, SE, MZ, HR, PT, MO, NL, UZ, AF, HN, ZW, PY, NO, UG, ES, PL, RW, YT, GH, BA, AL, DK, NP, BE, SN, HU, TZ, BG, KG, GT, PK, SK, TN, TG
+Last update: Sun Jun 11 2023 02:57:41 GMT+0000 (Coordinated Universal Time)
+Number of proxy: 1616
+Number of https proxy: 153
+Number of http proxy: 1463
+Number of proxy by Anonymity: Unknown -> 0, Low -> 310, Average -> 509, High -> 797
+Average speed: 618 ms
+Countries (81): US, LV, KH, CN, IN, GB, BD, PL, EG, IR, UA, TH, CL, GE, DO, JP, VN, ZA, AU, FI, BR, ID, KR, MX, NO, CO, SG, HK, AL, PE, EC, RU, TW, NP, RO, FR, DE, NG, TR, IT, CA, PK, UZ, LT, AR, PH, TZ, MY, ES, CH, BO, NL, UG, SE, GT, PS, YT, LY, BJ, VE, KZ, MO, PA, BG, RW, PR, SV, IE, PY, HU, CZ, GN, DZ, SN, BA, BY, AT, SK, TT, QA, TN
 Success (5):
   - https://www.proxy-list.download
   - https://www.us-proxy.org
