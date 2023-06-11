@@ -21,7 +21,7 @@ Number of https proxy: {%= httpsProxiesLength %}
 Number of http proxy: {%= httpProxiesLength %}
 Number proxy by Anonimity: Unknown -> {%= anonymity.unknown %}, Low -> {%= anonymity.low %}, Average -> {%= anonymity.average %}, High -> {%= anonymity.high %}
 Average speed: {%= averageSpeed %} ms
-Countries: {%= countries %}
+Countries ({%= countries.length %}): {%= countries %}
 Success ({%= data.successList.length %}):
 {%_ for(const success of data.successList){ %}
   - {%= success _%}
