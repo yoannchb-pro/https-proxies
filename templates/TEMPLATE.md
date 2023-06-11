@@ -19,7 +19,7 @@ Last update: {%= new Date(data.lastUpdate) %}
 Number of proxy: {%= data.count %}
 Number of https proxy: {%= httpsProxiesLength %}
 Number of http proxy: {%= httpProxiesLength %}
-Number of proxy by Anonimity: Unknown -> {%= anonymity.unknown %}, Low -> {%= anonymity.low %}, Average -> {%= anonymity.average %}, High -> {%= anonymity.high %}
+Number of proxy by Anonymity: Unknown -> {%= anonymity.unknown %}, Low -> {%= anonymity.low %}, Average -> {%= anonymity.average %}, High -> {%= anonymity.high %}
 Average speed: {%= averageSpeed %} ms
 Countries ({%= countries.length %}): {%= countries %}
 Success ({%= data.successList.length %}):
