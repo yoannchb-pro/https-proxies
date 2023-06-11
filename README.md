@@ -15,17 +15,19 @@ See the typescript package to get proxies with custom filters [here](https://git
 Generation logs [here](./bot.logs)
 
 ```txt
-Last update: Sun Jun 11 2023 00:53:12 GMT+0000 (Coordinated Universal Time)
-Number of proxy: 1345
-Number of https proxy: 135
-Number of http proxy: 1210
-Number of proxy by Anonymity: Unknown -> 0, Low -> 278, Average -> 277, High -> 790
-Average speed: 641 ms
-Countries (302): FI, RS, UA, US, GB, HK, SG, CN, ID, IT, JP, TR, DE, KR, VN, BD, IN, AU, FR, BR, MX, SE, AL, NP, NO, MY, EG, CO, CA, TZ, UG, PY, TH, GQ, AR, RU, IR, SV, CZ, ES, TW, NL, CL, GE, PE, PL, HN, RW, BO, GT, IL, KG, KH, CH, BE, HU, CM, LT, MM, DO, PA, KZ, YT, CR, EC, ZA, PT, PH, GR, RO, BG, MZ, IE, VE, UZ, SN
-Success (3):
+Last update: Sat Jun 10 2023 21:56:21 GMT-0400 (heure d’été de l’Est nord-américain)
+Number of proxy: 1713
+Number of https proxy: 194
+Number of http proxy: 1519
+Number of proxy by Anonymity: Unknown -> 0, Low -> 407, Average -> 451, High -> 855
+Average speed: 543 ms
+Countries (314): US, CN, VN, GB, ID, FR, ZA, HK, SG, VE, KR, MX, CO, DE, JP, CZ, EG, AR, IN, KH, TH, BD, MY, AU, CA, RU, BO, UA, TW, IR, EC, CL, KZ, DO, BR, CM, CH, FI, LY, TR, LV, AT, PH, LT, SV, PE, SE, MZ, HR, PT, MO, NL, UZ, AF, HN, ZW, PY, NO, UG, ES, PL, RW, YT, GH, BA, AL, DK, NP, BE, SN, HU, TZ, BG, KG, GT, PK, SK, TN, TG
+Success (5):
   - https://www.proxy-list.download
   - https://www.us-proxy.org
   - https://proxyscrape.com/free-proxy-list
+  - https://free-proxy-list.net/
+  - https://geonode.com/free-proxy-list
 Failed (0):
 ```
 

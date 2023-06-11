@@ -8,6 +8,8 @@ import tempjs from "tempjs-template";
 import { createLogs, toCSV, toTXT } from "./utils";
 import "./types/ProxyCheck";
 import ProxyCheck from "./types/ProxyCheck";
+import FreeProxyListNetScrapper from "./scrappers/free-proxy-list-net";
+import GeonodeScrapper from "./scrappers/geonode";
 
 const proxyCheck: ProxyCheck = require("proxy-check");
 
@@ -16,6 +18,8 @@ const scrappers = [
   { url: "https://www.proxy-list.download", fn: ProxyListScrapper },
   { url: "https://www.us-proxy.org", fn: USProxyScrapper },
   { url: "https://proxyscrape.com/free-proxy-list", fn: ProxyScrapeScrapper },
+  { url: "https://free-proxy-list.net/", fn: FreeProxyListNetScrapper },
+  { url: "https://geonode.com/free-proxy-list", fn: GeonodeScrapper },
 ];
 
 async function getProxies() {
