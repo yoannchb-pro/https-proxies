@@ -15,13 +15,13 @@ See the typescript package to get proxies with custom filters [here](https://git
 Generation logs [here](./bot.logs)
 
 ```txt
-Last update: Sat Jun 10 2023 21:56:21 GMT-0400 (heure d’été de l’Est nord-américain)
+Last update: Sat Jun 10 2023 21:58:30 GMT-0400 (heure d’été de l’Est nord-américain)
 Number of proxy: 1713
 Number of https proxy: 194
 Number of http proxy: 1519
 Number of proxy by Anonymity: Unknown -> 0, Low -> 407, Average -> 451, High -> 855
 Average speed: 543 ms
-Countries (314): US, CN, VN, GB, ID, FR, ZA, HK, SG, VE, KR, MX, CO, DE, JP, CZ, EG, AR, IN, KH, TH, BD, MY, AU, CA, RU, BO, UA, TW, IR, EC, CL, KZ, DO, BR, CM, CH, FI, LY, TR, LV, AT, PH, LT, SV, PE, SE, MZ, HR, PT, MO, NL, UZ, AF, HN, ZW, PY, NO, UG, ES, PL, RW, YT, GH, BA, AL, DK, NP, BE, SN, HU, TZ, BG, KG, GT, PK, SK, TN, TG
+Countries (79): US, CN, VN, GB, ID, FR, ZA, HK, SG, VE, KR, MX, CO, DE, JP, CZ, EG, AR, IN, KH, TH, BD, MY, AU, CA, RU, BO, UA, TW, IR, EC, CL, KZ, DO, BR, CM, CH, FI, LY, TR, LV, AT, PH, LT, SV, PE, SE, MZ, HR, PT, MO, NL, UZ, AF, HN, ZW, PY, NO, UG, ES, PL, RW, YT, GH, BA, AL, DK, NP, BE, SN, HU, TZ, BG, KG, GT, PK, SK, TN, TG
 Success (5):
   - https://www.proxy-list.download
   - https://www.us-proxy.org

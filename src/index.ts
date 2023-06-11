@@ -166,7 +166,7 @@ async function getProxies() {
       httpProxiesLength,
       httpsProxiesLength,
       averageSpeed,
-      countries: countries.join(", "),
+      countries,
       anonymity,
     })
   );
