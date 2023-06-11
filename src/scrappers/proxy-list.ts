@@ -18,7 +18,7 @@ async function ProxyListScrapper() {
         country: proxy.ISO,
         anonymity: defineAnonymityLevel(proxy.ANON, [
           "Transparent",
-          "",
+          "Anonymous",
           "Elite",
         ]),
         https: protocol === "https",

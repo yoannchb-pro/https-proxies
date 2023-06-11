@@ -1,2 +1,10 @@
-type ProxyCheck = ({}: { host: string; port: number }) => Promise<boolean>;
+type ProxyCheck = (
+  proxy:
+    | {
+        host: string;
+        port: number;
+        proxyAuth?: string;
+      }
+    | string
+) => Promise<boolean>;
 export default ProxyCheck;

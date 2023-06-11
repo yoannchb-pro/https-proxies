@@ -41,7 +41,7 @@ async function getProxies() {
           const valide = await proxyCheck({
             host: proxy.ip,
             port: proxy.port,
-          }).catch((_) => false);
+          }).catch(() => false);
 
           if (!valide) {
             failedProxies++;
@@ -77,6 +77,7 @@ async function getProxies() {
 
       successList.push(scrapper.url);
     } catch (e) {
+      console.error(e);
       logs.register("error", e);
       failedList.push(scrapper.url);
     }
@@ -93,13 +94,14 @@ async function getProxies() {
   logs.register("sucess", `${finalProxies.length} proxies results`);
   logs.register("failed", `${failedProxies} failed or duplicate proxies`);
 
-  //JSON
+  /* JSON */
   fs.writeFileSync(
     path.resolve(__dirname, "../proxies.json"),
     JSON.stringify(data)
   );
   logs.register("save", "JSON created with success");
-  //CSV
+
+  /* CSV */
   fs.writeFileSync(
     path.resolve(__dirname, "../proxies.csv"),
     toCSV(data.proxies, [
@@ -112,24 +114,66 @@ async function getProxies() {
     ])
   );
   logs.register("save", "CSV created with success");
-  //TXT
+
+  /* TXT */
   fs.writeFileSync(
     path.resolve(__dirname, "../proxies.txt"),
     toTXT(data.proxies)
   );
   logs.register("save", "TXT created with success");
-  //README
+
+  /* README */
   const template = path.resolve(__dirname, "../templates/TEMPLATE.md");
+  const httpsProxiesLength = data.proxies.filter((proxy) => proxy.https).length;
+  const httpProxiesLength = data.count - httpsProxiesLength;
+  let numberProxiesWithValidSpeed = 0;
+  const averageSpeed = Math.round(
+    data.proxies.reduce((a, b) => {
+      if (b.speed) {
+        numberProxiesWithValidSpeed++;
+        a += b.speed;
+      }
+      return a;
+    }, 0) / numberProxiesWithValidSpeed
+  );
+  const countries: string[] = [];
+  const anonymity = { unknown: 0, low: 0, average: 0, high: 0 };
+  for (const proxy of data.proxies) {
+    const country = proxy.country;
+    if (country && !countries.includes(country)) countries.push(country);
+    switch (proxy.anonymity) {
+      case 1:
+        anonymity.low++;
+        break;
+      case 2:
+        anonymity.average++;
+        break;
+      case 3:
+        anonymity.high++;
+        break;
+      default:
+        anonymity.unknown++;
+    }
+  }
   fs.writeFileSync(
     path.resolve(__dirname, "../README.md"),
-    tempjs.compileFromFile(template, { data })
+    tempjs.compileFromFile(template, {
+      data,
+      httpProxiesLength,
+      httpsProxiesLength,
+      averageSpeed,
+      countries: countries.join(", "),
+      anonymity,
+    })
   );
-  logs.register("save", "README created with success");
-  //LOGS
+  logs.register("save", "README generated with success");
+
+  /* LOGS */
   logs.save(path.resolve(__dirname, "../bot.logs"));
 }
 
 getProxies().catch((e) => {
+  console.error(e);
   logs.register("fatal error", e);
   logs.save(path.resolve(__dirname, "../bot.logs"));
 });

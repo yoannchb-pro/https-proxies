@@ -12,7 +12,7 @@ const { FastHTMLParser } = require("fast-html-dom-parser");
  */
 function defineAnonymityLevel(anonymity: string, levels: string[]) {
   const level = levels.indexOf(anonymity.trim());
-  return level === -1 ? 0 : level;
+  return level === -1 ? 0 : level + 1;
 }
 
 /**

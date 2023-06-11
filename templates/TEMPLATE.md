@@ -12,11 +12,16 @@ See the typescript package to get proxies with custom filters [here](https://git
 
 ## BOT LOGS
 
-Full version [here](./bot.logs)
+Generation logs [here](./bot.logs)
 
 ```txt
 Last update: {%= new Date(data.lastUpdate) %}
 Number of proxy: {%= data.count %}
+Number of https proxy: {%= httpsProxiesLength %}
+Number of http proxy: {%= httpProxiesLength %}
+Number proxy by Anonimity: Unknown -> {%= anonymity.unknown %}, Low -> {%= anonymity.low %}, Average -> {%= anonymity.average %}, High -> {%= anonymity.high %}
+Average speed: {%= averageSpeed %} ms
+Countries: {%= countries %}
 Success ({%= data.successList.length %}):
 {%_ for(const success of data.successList){ %}
   - {%= success _%}
