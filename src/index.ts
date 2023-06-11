@@ -6,7 +6,6 @@ import fs from "fs";
 import path from "path";
 import tempjs from "tempjs-template";
 import { createLogs, filterAsync, toCSV, toTXT } from "./utils";
-import "./types/ProxyCheck";
 import FreeProxyListNetScrapper from "./scrappers/free-proxy-list-net";
 import GeonodeScrapper from "./scrappers/geonode";
 import proxyCheck from "./proxy-check";
