@@ -15,13 +15,13 @@ See the typescript package to get proxies with custom filters [here](https://git
 Generation logs [here](./bot.logs)
 
 ```txt
-Last update: Wed Jun 28 2023 22:08:30 GMT+0000 (Coordinated Universal Time)
-Number of proxy: 63
-Number of https proxy: 22
-Number of http proxy: 41
-Number of proxy by Anonymity: Unknown -> 0, Low -> 10, Average -> 14, High -> 39
-Average speed: 1583 ms
-Countries (22): IN, US, JP, BZ, HK, KR, CA, AU, ZA, SG, CM, GB, FR, VN, TH, ES, BR, CL, RU, MO, VE, DE
+Last update: Thu Jun 29 2023 00:52:38 GMT+0000 (Coordinated Universal Time)
+Number of proxy: 86
+Number of https proxy: 29
+Number of http proxy: 57
+Number of proxy by Anonymity: Unknown -> 0, Low -> 20, Average -> 13, High -> 53
+Average speed: 499 ms
+Countries (29): HK, ZA, IN, TW, TH, US, DE, AU, JP, FI, PL, FR, KR, RU, CO, YT, VN, MO, CA, CM, VE, CN, SG, BE, BO, BZ, ES, AR, BR
 Success (5):
   - https://www.proxy-list.download
   - https://www.us-proxy.org
